@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#  This script uses until to
+#+ display Best School 10 times
+var=1
+
+until [ $var -ge 10 ]
+do
+    echo "Best School"
+    ((++var))
+done
