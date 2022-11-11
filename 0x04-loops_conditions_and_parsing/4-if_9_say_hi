@@ -5,11 +5,11 @@ var=1
 
 while [ $var -le 10 ]
 do
-    #echo "Best School"
+    echo "Best School"
     if [ $var -eq 9 ]
     then
 	echo "Hi"
     fi
-    echo "Best School"
+    #echo "Best School$var"
     var=$((var+1))
 done
