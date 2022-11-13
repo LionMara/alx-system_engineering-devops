@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+#  This script uses a while loop and if,
+#+ and elif, and else
+#+ to display Best School 9 times and Hi
+var=1
+
+while [ $var -le 10 ]
+do
+    if [ $var -eq 4 ]
+    then
+	echo "bad luck"
+    elif [ $var -eq 8 ]
+    then
+	echo "good luck"
+    else
+	echo "Best school"
+    fi
+    #echo "Best School$var"
+    var=$((var+1))
+done
