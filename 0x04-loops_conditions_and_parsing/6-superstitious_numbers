@@ -9,12 +9,15 @@ while [ $var -le 20 ]
 do
     case $var in
 	4)
+	    echo "$var"
 	    echo "bad luck from China"
 	    ;;
 	9)
+	    echo "$var"
 	    echo "bad luck from Japan"
 	    ;;
 	17)
+	    echo "$var"
 	    echo "bad luck from Italy"
 	    ;;
 	*)
