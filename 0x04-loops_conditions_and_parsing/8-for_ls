@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#  Bash script that lists content
+#+ of a directory
+
+ls > list
+
+for i in list
+do
+    awk -F "-" '{print $2}' "$i"
+done
