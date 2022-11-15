@@ -2,4 +2,4 @@
 
 # bash script that displays it's own PID
 
-echo "$$"
+echo $$
