@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 #  Bash script that displays To infinity and beyond
 #+ with a sleep 2
 #+ I am invincible!!! when receiving a SIGTERM signal
