@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # bash script that displays it's own PID
 
-ps -auxf
+./1-list_your_processes | grep bash

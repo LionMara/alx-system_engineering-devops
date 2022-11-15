@@ -6,7 +6,7 @@
 
 trap 'echo "I am invincible!!!"' SIGTERM
 
-while True
+while true
 do
     echo "To infinity and beyond"
 done
