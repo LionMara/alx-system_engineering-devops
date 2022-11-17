@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#a Bash script that listens on port 98 on localhost.
+
+#Terminal 0 cretae server
+nc -l 98
+
+#Listens on port 98 local host
+
+nc localhost 98
