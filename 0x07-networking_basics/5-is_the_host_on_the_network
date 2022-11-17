@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Shows listening ports and PID of progs listed
+# pings an IP address passed as an argument
 
 if ! (($#))
 then
