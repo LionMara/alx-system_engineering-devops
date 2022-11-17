@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# MAC and IP addresses
+
+# TCP Box
+echo "1"
+
+# UDP Box
+echo "2"
+
+# TCP worker
+echo "1"

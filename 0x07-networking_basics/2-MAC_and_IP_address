@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# MAC and IP addresses
+
+# What is a MAC Address
+
+echo "2"
+
+# What is an IP Adress?
+echo "3"

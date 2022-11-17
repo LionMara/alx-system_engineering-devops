@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Shows listening ports and PID of progs listed
+
+if ! (($#))
+then
+    echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
+else
+    var=$1
+    ping -c 5 "$var"
+fi
