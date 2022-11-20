@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 #OSI Model description script.
 # What is the OSI Model?
-echo '2'
+echo "2"
+echo ""
 # How is the OSI model organized
 echo '2'
+echo ""
