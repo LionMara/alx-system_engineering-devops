@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Script that installs a nginx server
+
+# update packages
+sudo apt-get update
+
+# install nginx
+sudo apt-get install nginx
+
+# add lines to the default conf file
+sudo sed -i '/server {/a \    location \/redirect_me {\n        return 301 https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4;\n    }' /etc/nginx/sites-available/default
