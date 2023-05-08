@@ -1,4 +1,4 @@
-#!/usr/bin/env/bash
+#!/usr/bin/env bash
 # run apache
 
 echo "ServerNmae Location" >> /etc/apache2.conf
