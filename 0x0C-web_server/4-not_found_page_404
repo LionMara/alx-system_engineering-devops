@@ -24,6 +24,6 @@ awk -v code="$new_code" '
     {
         print
     }
-' "$file_path" > temp && mv temp "$file_path"
+' "$file_path" | sudo tee temp > /dev/null && sudo mv temp "$file_path"
 
 sudo systemctl reload nginx
