@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Script that installs a nginx server
+
+# update packages
+sudo apt-get update
+
+# install nginx
+sudo apt-get install -y nginx
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+
+# add lines to the default conf file
+new_code='error_page 404 /404.html;'
+
+
+file_path="/etc/nginx/sites-available/default"
+
+# Use awk to append the new code after the uncommented "server_name" line
+awk -v code="$new_code" '
+    /^[^#]/ && /server_name/ {
+        print
+        print code
+        next
+    }
+    {
+        print
+    }
+' "$file_path" > temp && mv temp "$file_path"
+
+sudo systemctl reload nginx
