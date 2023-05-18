@@ -6,6 +6,25 @@ sudo apt-get update
 
 # install nginx
 sudo apt-get install nginx
-
+echo "Hello, world" > /var/www/html/index.html
 # add lines to the default conf file
-sudo sed -i '/server {/a \    location \/redirect_me {\n        return 301 https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4;\n    }' /etc/nginx/sites-available/default
+new_code='location /redirect_me {
+	 return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+}'
+
+
+file_path="/etc/nginx/sites-available/default"
+
+# Use awk to append the new code after the uncommented "server_name" line
+awk -v code="$new_code" '
+    /^[^#]/ && /server_name/ {
+        print
+        print code
+        next
+    }
+    {
+        print
+    }
+' "$file_path" > temp && mv temp "$file_path"
+
+sudo systemctl reload nginx
