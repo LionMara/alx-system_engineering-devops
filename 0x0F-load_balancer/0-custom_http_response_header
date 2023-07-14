@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 # configure nginx on web-01and web-02 with custom hedaer
 # X-Served-By: 03-web-01
+
 sudo apt-get -y update
 sudo apt-get -y install nginx
 
 sed -i "47i\\\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default
 echo "Hello World!" | tee /var/www/html/index.html
 echo "Ceci n'est pas une page" > /var/www/htmlcustom_404.html
+
+sudo service nginx  start
