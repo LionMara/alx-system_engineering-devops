@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# script dispalys info about subdomains
+
+# check if domain parameter is set
+if [ -z "$1" ]; then
+    echo "Please specify the domain name."
+    exit 1
+fi
+
+# check if subdomain parameter is set
+if [ -n "$2" ]; then
+    # Get subdomain record
+    record_type=$(awk -F" " '{print $2}' nslookup "$2.$1" | head -1)
+
+    # Get subdomain destination
+    destination=$(awk -F"" '{print $4}' nslookup  "$2.$1" | head -1)
+
+    # Display the subdomain information
+    echo "The subdomain $2 is a $record_type record and points to $destination."
+else
+    # get subdomains www, lb-o1, web-01, and web-02
+    subdomains=(www lb-01 web-01 web-02)
+
+    # loop through the subs
+    for subdomain in "${subdomains[@]}"; do
+	# get the subdomain record type
+	record_type=$(awk -F" " '{print $2}' nslookup "$subdomain.$1" | head -1)
+
+	# get the subdomain destination
+	destination=$(awk -F" " '{print $4}' nslookup "$subdomain.$1" | head -1)
+
+	# Display the subdomain information
+	echo "The subdomain $2 is a $record_type record and points to $destination."
+    done
+fi

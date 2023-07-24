@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# script displays info about subdomains
+
+# Function to display info for a specific domain
+display_subdomain_info() {
+    local domain="$1"
+    local subdomain="$2"
+
+    # retrieve the DNS record for the specified subdomain using dig
+    local record_type # =$(dig +short "$subdomain.$domain" | awk '{print $4}')
+    local destination # =$(dig +short "$subdomain.$domain")
+    record_type=$(dig  "$subdomain.$domain" | awk '/ANSWER SECTION:/{getline; print $4}')
+    destination=$(dig +short "$subdomain.$domain")
+    # display the information
+    echo "The subdomain $subdomain is a $record_type record and points to $destination."
+}
+
+# main script
+main () {
+    local domain="$1"
+    local subdomain="$2"
+
+    # if subdomain is provided, display info for specified subdomain
+    if [ -n "$subdomain" ]; then
+	display_subdomain_info "$domain" "$subdomain"
+    else
+	# Display info for subdomains
+	display_subdomain_info "$domain" "www"
+	display_subdomain_info "$domain" "lb-01"
+	display_subdomain_info "$domain" "web-01"
+	display_subdomain_info "$domain" "web-02"
+    fi
+}
+
+# check if script is run with correct number of args
+if [ $# -lt 1 ]; then
+   echo "Usage: $0 domain [subdomain]"
+   exit 1
+fi
+
+main "$@"
