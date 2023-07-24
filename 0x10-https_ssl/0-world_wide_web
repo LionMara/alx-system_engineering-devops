@@ -12,7 +12,7 @@ display_subdomain_info() {
     record_type=$(dig  "$subdomain.$domain" | awk '/ANSWER SECTION:/{getline; print $4}')
     destination=$(dig +short "$subdomain.$domain")
     # display the information
-    echo "The subdomain $subdomain is a $record_type record and points to $destination."
+    echo "The subdomain $subdomain is a $record_type record and points to $destination"
 }
 
 # main script
