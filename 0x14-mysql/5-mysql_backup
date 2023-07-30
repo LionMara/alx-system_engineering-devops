@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# script that generates a MySQL dump and creates a compressed archive out of it.
+# get the current date
+today=$(date +"%d-%m-%Y")
+
+# get the password from cmd line
+password=$1
+
+# Create the MySQL dump file
+mysqldump -u root -p"$password" --all-databases > backup.sql
+
+# create the compressed arcive
+tar -czvf "$today".tar.gz backup.sql.gz
